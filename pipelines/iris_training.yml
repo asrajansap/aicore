@@ -1,18 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
-  name: iris-training-pipeline # executable id, must be unique across all your workflows (YAML files)
+  name: iris-train-pipeline # executable id, must be unique across all your workflows (YAML files)
   annotations:
-    scenarios.ai.sap.com/name: "Iris DataSet Classifier Scenario" # Scenario name should be the use case
+    scenarios.ai.sap.com/name: "Iris DataSet Scenario" # Scenario name should be the use case
     scenarios.ai.sap.com/description: "SAP AI Core tutorial to classify the popular iris dataset"
 
-    executables.ai.sap.com/name: "Iris model training" # Executable name should describe the workflow in the use case  
+    executables.ai.sap.com/name: "Iris model train" # Executable name should describe the workflow in the use case  
     executables.ai.sap.com/description: "Training with popular iris dataset"
     
     artifacts.ai.sap.com/irisdataset.kind: "dataset" # Helps in suggesting the kind of inputs that can be attached.
     artifacts.ai.sap.com/irismodel.kind: "model" # Helps in suggesting the kind of artifact that can be generated.
   labels:
-    scenarios.ai.sap.com/id: "iris-classifier-scenario"
+    scenarios.ai.sap.com/id: "iris-scenario"
     ai.sap.com/version: "4.0"
 spec:
   imagePullSecrets:
