@@ -1,13 +1,13 @@
 apiVersion: ai.sap.com/v1alpha1
 kind: ServingTemplate
 metadata:
-  name: iris-serv-pipeline # executable ID, must be unique across your SAP AI Core instance, for example use `server-pipeline-yourname-1234`
+  name: iris-serv-pipe # executable ID, must be unique across your SAP AI Core instance, for example use `server-pipeline-yourname-1234`
   annotations:
-    scenarios.ai.sap.com/name: "Iris DataSet  Scenario" # Scenario name should be the use case
-    scenarios.ai.sap.com/description: "SAP AI Core tutorial to classify the popular iris dataset"
+    scenarios.ai.sap.com/name: "Iris DataSet" # Scenario name should be the use case
+    scenarios.ai.sap.com/description: "Testing iris dataset"
 
-    executables.ai.sap.com/name: "irismodelserving" # Executable name should describe the workflow in the use case  
-    executables.ai.sap.com/description: "Serving with popular iris dataset"
+    executables.ai.sap.com/name: "irisserving" # Executable name should describe the workflow in the use case  
+    executables.ai.sap.com/description: "Serving with iris dataset"
 
     artifacts.ai.sap.com/irismodel.kind: "model" # Suggest the kind of artifact to input.
   labels:
@@ -29,12 +29,12 @@ spec:
     spec: |
       predictor:
         imagePullSecrets:
-          - name: racdoc-registry   # your docker registry secret
+          - name: rajdoc-registry   # your docker registry secret
         minReplicas: 1
         maxReplicas: 3    # how much to scale
         containers:
         - name: kserve-container
-          image: docker.io/racdoc09/iris-ai-serving-image:04
+          image: docker.io/s0026942030/iris-serving-image:04
           ports:
             - containerPort: 9001    # customizable port
               protocol: TCP
